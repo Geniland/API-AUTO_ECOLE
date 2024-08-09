@@ -9,9 +9,9 @@ use App\Http\Controllers\API\OptionController;
 use App\Http\Controllers\API\AuthController;
 
 // Authenfication
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+// Route::get('/user', function (Request $request) {
+//     return $request->user();
+// })->middleware('auth:sanctum');
 
 Route::post('/register', [App\Http\Controllers\API\AuthController::class, 'register']);
 Route::post('/login', [App\Http\Controllers\API\AuthController::class, 'login']);
@@ -21,6 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 
 
+Route::get('/users', [AuthController::class, 'getAllUsers']);
+// Route::middleware('auth:sanctum')->get('/usersLog', [AuthController::class, 'getAuthenticatedUser']);
+
+Route::post('/upload-video', [App\Http\Controllers\API\VideoController::class, 'upload']);
+Route::get('/videos', [App\Http\Controllers\API\VideoController::class, 'index']);
 
 
 Route::apiResource('cours', CoursController::class);
