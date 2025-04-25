@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+        'driver' => 'sanctum', // ou 'jwt' si tu utilises tymon/jwt-auth
+        'provider' => 'users',
+        ],
+    
     ],
 
     /*

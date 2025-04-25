@@ -9,7 +9,7 @@ class Question extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['test_id', 'question_text'];
+    protected $fillable = ['test_id', 'question_text','image'];
 
     public function options()
     {

@@ -12,13 +12,18 @@ class VideoController extends Controller
     /**
      * Handle the video upload request.
      */
-    public function upload(Request $request)
+    public function store(Request $request)
     {
+
+        \Log::info('Upload request received');
+        \Log::info('Request data: ' . json_encode($request->all())); // Afficher toutes les données de la requête
+        
         // Validation des champs
         $request->validate([
-            'video' => 'required|mimes:mp4,mov,ogg,qt|max:90000000', // Limite à 20MB
+            'video' => 'required|mimes:mp4,mov,ogg,qt,avi,webm|max:1000000000', // Limite à 20MB
             'description' => 'required|string|max:255',
         ]);
+
 
         // Stockage de la vidéo
         if ($request->hasFile('video')) {
